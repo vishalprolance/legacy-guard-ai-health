@@ -1,0 +1,190 @@
+{
+  "app_config": {
+    "app_path": "C:\\Program Files\\BankApp\\BankApp.exe",
+    "app_title": "Bank Application",
+    "timeout": 30,
+    "launch_delay": 5
+  },
+  "test_flows": [
+    {
+      "name": "application_launch",
+      "description": "Launch and verify application startup",
+      "priority": "HIGH",
+      "steps": [
+        {
+          "action": "launch_app",
+          "expected": "app_window_visible",
+          "timeout": 30
+        },
+        {
+          "action": "verify_window_ready",
+          "expected": "window_enabled_and_visible",
+          "timeout": 10
+        }
+      ]
+    },
+    {
+      "name": "login_flow",
+      "description": "Complete login process and validate dashboard access",
+      "priority": "HIGH",
+      "steps": [
+        {
+          "action": "locate_login_fields",
+          "expected": "username_and_password_fields_found",
+          "timeout": 10
+        },
+        {
+          "action": "enter_credentials",
+          "expected": "credentials_entered_successfully",
+          "timeout": 15
+        },
+        {
+          "action": "click_login_button",
+          "expected": "login_submitted",
+          "timeout": 5
+        },
+        {
+          "action": "verify_login_success",
+          "expected": "dashboard_or_main_screen_visible",
+          "timeout": 20
+        }
+      ]
+    },
+    {
+      "name": "dashboard_validation",
+      "description": "Validate main dashboard elements and functionality",
+      "priority": "HIGH",
+      "steps": [
+        {
+          "action": "capture_dashboard_screenshot",
+          "expected": "screenshot_captured",
+          "timeout": 5
+        },
+        {
+          "action": "validate_dashboard_elements",
+          "expected": "key_elements_present",
+          "timeout": 10
+        },
+        {
+          "action": "check_account_information",
+          "expected": "account_data_visible",
+          "timeout": 10
+        }
+      ]
+    },
+    {
+      "name": "transaction_workflow",
+      "description": "Test transaction screens and form interactions",
+      "priority": "MEDIUM",
+      "steps": [
+        {
+          "action": "navigate_to_transactions",
+          "expected": "transaction_screen_loaded",
+          "timeout": 15
+        },
+        {
+          "action": "validate_transaction_form",
+          "expected": "form_elements_present",
+          "timeout": 10
+        },
+        {
+          "action": "test_form_interactions",
+          "expected": "form_inputs_responsive",
+          "timeout": 15
+        },
+        {
+          "action": "validate_transaction_limits",
+          "expected": "limits_and_balances_displayed",
+          "timeout": 10
+        },
+        {
+          "action": "test_validation_messages",
+          "expected": "error_handling_works",
+          "timeout": 10
+        },
+        {
+          "action": "return_to_main_screen",
+          "expected": "navigation_successful",
+          "timeout": 10
+        }
+      ]
+    },
+    {
+      "name": "screen_validation",
+      "description": "Visual and semantic validation of key screens",
+      "priority": "MEDIUM",
+      "steps": [
+        {
+          "action": "capture_screen_screenshots",
+          "expected": "all_screenshots_captured",
+          "timeout": 20
+        },
+        {
+          "action": "perform_visual_comparison",
+          "expected": "visual_similarity_within_threshold",
+          "timeout": 30
+        },
+        {
+          "action": "extract_text_via_ocr",
+          "expected": "text_extraction_successful",
+          "timeout": 25
+        },
+        {
+          "action": "perform_llm_analysis",
+          "expected": "semantic_validation_completed",
+          "timeout": 45
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "similarity_threshold": 0.85,
+    "ocr_confidence_threshold": 60,
+    "expected_elements": {
+      "dashboard": [
+        "Account Balance",
+        "Recent Transactions", 
+        "Quick Actions",
+        "User Name",
+        "Date"
+      ],
+      "login": [
+        "Username",
+        "Password",
+        "Login",
+        "Bank Logo"
+      ],
+      "transactions": [
+        "Transaction History",
+        "Amount",
+        "Date",
+        "Description",
+        "Balance"
+      ]
+    },
+    "required_text_patterns": {
+      "account_numbers": "\\b\\d{8,12}\\b",
+      "currency_amounts": "\\$[\\d,]+\\.\\d{2}",
+      "dates": "\\d{1,2}/\\d{1,2}/\\d{4}",
+      "transaction_ids": "TXN\\d{8,}"
+    }
+  },
+  "error_handling": {
+    "max_retries": 3,
+    "retry_delay": 5,
+    "screenshot_on_error": true,
+    "continue_on_non_critical_failure": true
+  },
+  "reporting": {
+    "generate_html_report": true,
+    "generate_json_report": true,
+    "include_screenshots": true,
+    "include_error_logs": true,
+    "alert_on_failure": true
+  },
+  "security": {
+    "mask_sensitive_data": true,
+    "exclude_credentials_from_logs": true,
+    "secure_screenshot_storage": true
+  }
+}

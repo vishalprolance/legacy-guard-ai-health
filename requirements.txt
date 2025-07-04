@@ -1,0 +1,50 @@
+# Core CrewAI and agent framework
+crewai==0.41.1
+langchain==0.1.0
+langchain-community==0.0.10
+
+# Desktop automation and UI interaction
+pywinauto==0.6.8
+pygetwindow==0.0.9
+pyautogui==0.9.54
+
+# OCR and image processing
+pytesseract==0.3.10
+Pillow==10.1.0
+opencv-python==4.8.1.78
+scikit-image==0.22.0
+
+# Computer vision and image comparison
+numpy==1.24.3
+scipy==1.11.4
+
+# Web requests and API interactions
+requests==2.31.0
+httpx==0.25.2
+
+# Configuration and environment management
+python-dotenv==1.0.0
+pyyaml==6.0.1
+
+# Logging and monitoring
+structlog==23.2.0
+
+# Data processing and analysis
+pandas==2.1.4
+json5==0.9.14
+
+# Optional: Streamlit for dashboard (if needed)
+streamlit==1.28.2
+plotly==5.17.0
+
+# Optional: Notification services
+slack-sdk==3.26.0
+
+# Development and testing
+pytest==7.4.3
+pytest-cov==4.1.0
+black==23.11.0
+flake8==6.1.0
+
+# Windows-specific packages (install only on Windows)
+# pywin32==306  # Uncomment if needed for Windows-specific functionality
